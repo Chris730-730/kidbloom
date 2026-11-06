@@ -65,3 +65,4 @@ Privacy: profiles are stored on your computer. Parent photos are sent only to Op
 - JSON API: `POST /api/predict` with `{"father": {...}, "mother": {...}, "child": {"age": 5}}` returns the full plan.
 
 Before putting it on the internet, set a `SECRET_KEY` environment variable and run it with a production server such as waitress or gunicorn.
+"# kidbloom" 

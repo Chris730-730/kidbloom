@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img"><rect width="320" height="220" rx="28" fill="#EAF8EE"/><g transform="translate(160,110) scale(1.1)">
+  <ellipse cx="0" cy="70" rx="48" ry="8" fill="#000" opacity=".06"/>
+  <ellipse cx="0" cy="45" rx="34" ry="28" fill="#FFF2B3"/>
+  <ellipse cx="-24" cy="66" rx="14" ry="8" fill="#FFF2B3"/><ellipse cx="24" cy="66" rx="14" ry="8" fill="#FFF2B3"/>
+  <circle cx="0" cy="0" r="28" fill="#FBE0CC"/><path d="M-5.6000000000000005,-26.599999999999998 q7.0,-9.799999999999999 9.799999999999999,-1.4000000000000001" stroke="#C98B3C" stroke-width="3.36" fill="none" stroke-linecap="round"/><circle cx="-10.64" cy="1.4000000000000001" r="2.52" fill="#2E4A5B"/><circle cx="10.64" cy="1.4000000000000001" r="2.52" fill="#2E4A5B"/><circle cx="-16.8" cy="9.799999999999999" r="3.9200000000000004" fill="#F7A8A8" opacity=".55"/><circle cx="16.8" cy="9.799999999999999" r="3.9200000000000004" fill="#F7A8A8" opacity=".55"/><path d="M-7.0,10.64 q7.0,7.840000000000001 14.0,0" stroke="#2E4A5B" stroke-width="2.24" fill="none" stroke-linecap="round"/>
+  <rect x="40" y="36" width="24" height="24" rx="4" fill="#8FD3F0"/><text x="52" y="54" font-size="15" font-family="Arial" font-weight="700" fill="#fff" text-anchor="middle">A</text>
+  <rect x="46" y="12" width="22" height="22" rx="4" fill="#A6E3B5"/><text x="57" y="28" font-size="14" font-family="Arial" font-weight="700" fill="#fff" text-anchor="middle">B</text>
+  <rect x="-66" y="40" width="22" height="22" rx="4" fill="#F29CB4"/><text x="-55" y="56" font-size="14" font-family="Arial" font-weight="700" fill="#fff" text-anchor="middle">C</text>
+  <circle cx="30" cy="40" r="8" fill="#FBE0CC"/><circle cx="-30" cy="42" r="8" fill="#FBE0CC"/>
+</g></svg>

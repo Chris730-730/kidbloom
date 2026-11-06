@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}KidBloom{% endblock %} · Grow healthy, talented kids</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="36" height="36">
+        <span>KidBloom</span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+      <nav class="links">
+        <a href="{{ url_for('index') }}#how">How it works</a>
+        <a href="{{ url_for('index') }}#talents">Talents</a>
+        <a href="{{ url_for('families') }}">My families</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
+        <a class="btn btn-sm" href="{{ url_for('start') }}">Start now</a>
+      </nav>
+    </div>
+  </header>
+
+  {% with msgs = get_flashed_messages() %}
+    {% if msgs %}<div class="wrap">{% for m in msgs %}<div class="flash">{{ m }}</div>{% endfor %}</div>{% endif %}
+  {% endwith %}
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p><strong>KidBloom</strong> · every child grows at their own pace.</p>
+      <p class="muted small">Face previews and talent predictions are for fun and inspiration. Each child is unique, so watch what they love and follow their lead.</p>
+    </div>
+  </footer>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

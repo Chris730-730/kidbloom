@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-text">
+      <span class="pill">🌱 For parents and parents-to-be</span>
+      <h1>Grow a healthy child<br>with a <span class="hl">gifted talent</span></h1>
+      <p class="lead">Upload both parents' photos to preview your child's face. Tell us your hobbies, favorite food, habits and hidden talents. KidBloom predicts your child's likely talents and builds a step-by-step plan to help them shine in one special field.</p>
+      <div class="cta">
+        <a class="btn" href="{{ url_for('start') }}">Meet your future child →</a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+      </div>
+      <div class="stats">
+        <div><b>8</b><span>talent fields</span></div>
+        <div><b>0-18</b><span>age roadmap</span></div>
+        <div><b>3</b><span>face previews</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="{{ url_for('static', filename='img/hero.svg') }}" alt="Children painting, singing, reading and playing on a green hill">
+    </div>
+  </div>
+</section>
+
+<section id="how" class="section">
+  <div class="wrap">
+    <h2 class="center">How it works</h2>
+    <p class="center muted">Four simple steps, about 3 minutes.</p>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3>Upload photos</h3><p>Add a clear front photo of Dad and Mom.</p></div>
+      <div class="step"><span class="num">2</span><h3>Share about you</h3><p>Hobbies, interests, favorite food, bad habits and hidden talents.</p></div>
+      <div class="step"><span class="num">3</span><h3>See predictions</h3><p>Face previews plus a talent chart for your child.</p></div>
+      <div class="step"><span class="num">4</span><h3>Follow the plan</h3><p>An age roadmap and weekly schedule for one special field.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <h2 class="center">Every child has a gift</h2>
+    <p class="center muted">Play, study, paint, sing. We help you notice it early and grow it with love.</p>
+    <div class="gallery">
+      {% for img, title, text in [
+        ('card-art.svg', 'Painting', 'Colors and shapes build creativity.'),
+        ('card-music.svg', 'Singing', 'Rhythm and voice grow confidence.'),
+        ('card-study.svg', 'Reading', 'Stories open the mind.'),
+        ('card-play.svg', 'Baby play', 'Blocks and touch build the brain.'),
+        ('card-sports.svg', 'Sports', 'Movement keeps the body strong.'),
+        ('card-science.svg', 'Science', 'Curiosity turns into discovery.')] %}
+      <figure class="g-card">
+        <img src="{{ url_for('static', filename='img/' ~ img) }}" alt="{{ title }}" loading="lazy">
+        <figcaption><b>{{ title }}</b><span>{{ text }}</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="talents" class="section">
+  <div class="wrap">
+    <h2 class="center">Talent fields we look at</h2>
+    <div class="fields">
+      {% for key, f in fields.items() %}
+      <div class="field"><span class="f-icon">{{ f.icon }}</span><div><b>{{ f.name }}</b><small>Future {{ f.famous_path }}</small></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="banner">
+      <div>
+        <h2>Ready to meet your little star?</h2>
+        <p>Your profiles stay on your own computer. Photos go only to the AI service you choose.</p>
+      </div>
+      <a class="btn btn-white" href="{{ url_for('start') }}">Start now</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

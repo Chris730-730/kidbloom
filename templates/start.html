@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Start{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="wrap narrow">
+    <h1 class="center">Tell us about your family</h1>
+    <p class="center muted">The more you share, the better the prediction. Every field is optional except the child's age.</p>
+
+    {% if not ai_ready %}
+    <div class="card status warn">⚠️ AI face prediction needs an API key. <a href="{{ url_for('settings') }}">Add it in Settings</a> (one minute). You can still get the talent plan without it.</div>
+    {% endif %}
+    <form class="form" method="post" enctype="multipart/form-data" id="startForm">
+      <div class="parents">
+        {% for p, label, color in [('dad', 'Dad', 'blue'), ('mom', 'Mom', 'green')] %}
+        <div class="card parent {{ color }}">
+          <h2>{{ label }}</h2>
+          <label class="photo-drop" for="{{ p }}_photo">
+            <img class="preview" id="{{ p }}_preview" alt="" hidden>
+            <span class="drop-text">📷 Click to add {{ label }}'s photo<br><small>Front face, good light</small></span>
+          </label>
+          <input type="file" id="{{ p }}_photo" name="{{ p }}_photo" accept="image/*" data-preview="{{ p }}_preview" hidden>
+
+          <label>Name <input name="{{ p }}_name" placeholder="{{ label }}"></label>
+          <label>Hobbies <input name="{{ p }}_hobby" placeholder="e.g. guitar, hiking, chess"></label>
+          <label>Interesting fields <input name="{{ p }}_interest" placeholder="e.g. space, business, fashion"></label>
+          <label>Job <input name="{{ p }}_job" placeholder="e.g. engineer, nurse, chef"></label>
+          <label>Favorite food <input name="{{ p }}_food" placeholder="e.g. spicy noodles, cake"></label>
+          <label>Bad habit <input name="{{ p }}_habit" placeholder="e.g. stays up late, talks a lot"></label>
+          <label>Hidden talent <input name="{{ p }}_talent" placeholder="e.g. great singer, fast runner"></label>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="card">
+        <h2>About the child</h2>
+        <div class="grid3">
+          <label>Name or nickname <input name="child_name" placeholder="Little one"></label>
+          <label>Age now (0 if not born yet)
+            <input type="number" name="child_age" min="0" max="18" value="0" required></label>
+          <label>Gender
+            <select name="child_gender"><option value="any">Surprise me</option><option value="boy">Boy</option><option value="girl">Girl</option></select></label>
+        </div>
+        <label>Face mix: <span id="mixOut">50% Dad / 50% Mom</span>
+          <input type="range" name="mix" id="mix" min="0" max="100" value="50"></label>
+        <label>Field you want to focus on (optional)
+          <select name="focus">
+            <option value="">Use the top predicted talent</option>
+            {% for key, f in fields.items() %}<option value="{{ key }}">{{ f.icon }} {{ f.name }}</option>{% endfor %}
+          </select></label>
+      </div>
+
+      <div class="center">
+        <button class="btn btn-lg" type="submit" id="submitBtn">✨ Predict my child</button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

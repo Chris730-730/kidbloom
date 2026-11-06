@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}My families{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="wrap narrow">
+    <h1 class="center">My families</h1>
+    {% if items %}
+    <div class="list">
+      {% for it in items %}
+      <div class="card list-item">
+        <span class="big-icon">{{ it.focus.icon }}</span>
+        <div class="grow">
+          <a href="{{ url_for('result', fid=it.id) }}"><b>{{ it.name }}</b></a>
+          <p class="muted small">Age {{ it.age }} · {{ it.focus.name }} · {{ it.created[:16].replace('T', ' ') }}</p>
+        </div>
+        <form method="post" action="{{ url_for('delete_family', fid=it.id) }}" onsubmit="return confirm('Delete this profile?')">
+          <button class="btn btn-ghost btn-sm" type="submit">Delete</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="center muted">No profiles yet.</p>
+    <div class="center"><a class="btn" href="{{ url_for('start') }}">Create the first one</a></div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

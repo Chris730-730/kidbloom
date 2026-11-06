@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="wrap narrow">
+    <h1 class="center">AI settings</h1>
+    <p class="center muted">The child face prediction uses ChatGPT's image model through the OpenAI API. Your key is saved only in the <code>.env</code> file on your computer.</p>
+
+    <div class="card status {{ 'ok' if active else 'warn' }}">
+      {% if active %}✅ AI face prediction is on, using <b>OpenAI</b>{% if openai_model %} ({{ openai_model }}){% endif %}.
+      {% else %}⚠️ No OpenAI API key yet, so face prediction is off. The talent plan still works.{% endif %}
+    </div>
+
+    <form class="form card" method="post" autocomplete="off">
+      <h2>ChatGPT / OpenAI</h2>
+      <label>OpenAI API key
+        <input name="OPENAI_API_KEY" placeholder="sk-..." value="{{ openai }}"></label>
+      {% if openai %}<label class="check"><input type="checkbox" name="clear_OPENAI_API_KEY" value="1"> Remove this key</label>{% endif %}
+      <label>Image model (optional)
+        <input name="OPENAI_IMAGE_MODEL" placeholder="chatgpt-image-latest (default)" value="{{ openai_model }}"></label>
+      <label>Image quality
+        <select name="OPENAI_IMAGE_QUALITY">
+          {% for q in ['low', 'medium', 'high'] %}<option value="{{ q }}" {% if q == quality %}selected{% endif %}>{{ q | capitalize }}</option>{% endfor %}
+        </select></label>
+      <p class="muted small">A ChatGPT Plus subscription does not include API access. Get an API key at platform.openai.com → API keys and add billing credit. Each prediction makes 3 images, so higher quality costs more and takes longer.</p>
+
+      <div class="center"><button class="btn" type="submit">Save settings</button></div>
+    </form>
+  </div>
+</section>
+{% endblock %}

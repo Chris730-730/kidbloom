@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Not found{% endblock %}
+{% block content %}
+<section class="section center">
+  <div class="wrap narrow">
+    <img src="{{ url_for('static', filename='img/card-play.svg') }}" alt="" style="max-width:320px">
+    <h1>Oops, this page wandered off</h1>
+    <a class="btn" href="{{ url_for('index') }}">Back home</a>
+  </div>
+</section>
+{% endblock %}
